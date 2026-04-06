@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Review Reply AI — Instant Professional Review Responses</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-icon">💬</span>
+        <span class="logo-text">Review Reply <span class="accent">AI</span></span>
+      </div>
+      <nav class="nav">
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="https://stripe.com" class="btn btn-outline btn-sm" target="_blank">Start Free Trial</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1 class="hero-title">Reply to every review<br /><span class="accent">in seconds.</span></h1>
+      <p class="hero-sub">Paste a Google or Yelp review, pick your tone, and get a professional reply instantly. No more staring at the screen wondering what to say.</p>
+    </div>
+  </section>
+
+  <!-- APP SECTION -->
+  <section class="app-section">
+    <div class="container app-grid">
+
+      <!-- FORM CARD -->
+      <div class="card form-card">
+        <h2 class="card-title">Generate a Reply</h2>
+
+        <form id="replyForm" novalidate>
+
+          <div class="form-group">
+            <label for="reviewText" class="form-label">Customer Review</label>
+            <textarea
+              id="reviewText"
+              name="reviewText"
+              class="form-textarea"
+              rows="6"
+              placeholder="Paste the review here... e.g. 'We waited 45 minutes for our food and the server was rude. Will not be returning.'"
+              required
+            ></textarea>
+            <span class="field-error" id="reviewError"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="businessType" class="form-label">Business Type</label>
+              <select id="businessType" name="businessType" class="form-select" required>
+                <option value="" disabled selected>Select type…</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Salon">Salon</option>
+                <option value="Gym">Gym</option>
+                <option value="Retail">Retail</option>
+                <option value="Service Business">Service Business</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="field-error" id="typeError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="tone" class="form-label">Reply Tone</label>
+              <select id="tone" name="tone" class="form-select" required>
+                <option value="" disabled selected>Select tone…</option>
+                <option value="Professional">Professional</option>
+                <option value="Friendly">Friendly</option>
+                <option value="Apologetic">Apologetic</option>
+                <option value="Enthusiastic">Enthusiastic</option>
+              </select>
+              <span class="field-error" id="toneError"></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="generateBtn">
+            <span class="btn-text">✨ Generate Reply</span>
+            <span class="btn-loading hidden">
+              <span class="spinner"></span> Generating…
+            </span>
+          </button>
+
+        </form>
+      </div>
+
+      <!-- OUTPUT CARD -->
+      <div class="card output-card" id="outputCard">
+        <div class="output-empty" id="outputEmpty">
+          <div class="output-empty-icon">💡</div>
+          <p>Your generated reply will appear here.</p>
+          <p class="output-empty-sub">Fill in the form and hit Generate.</p>
+        </div>
+
+        <div class="output-result hidden" id="outputResult">
+          <div class="output-header">
+            <h3 class="output-title">Generated Reply</h3>
+            <button class="btn btn-ghost btn-sm" id="copyBtn" title="Copy to clipboard">
+              <span id="copyBtnText">📋 Copy</span>
+            </button>
+          </div>
+          <div class="output-body" id="outputBody"></div>
+          <div class="output-meta">
+            <span class="badge" id="toneBadge"></span>
+            <span class="badge" id="typeBadge"></span>
+          </div>
+        </div>
+
+        <div class="output-error hidden" id="outputError">
+          <div class="output-error-icon">⚠️</div>
+          <p id="outputErrorMsg">Something went wrong. Please try again.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div class="container">
+      <h2 class="section-title">How it works</h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3 class="step-title">Paste the review</h3>
+          <p class="step-desc">Copy any review from Google, Yelp, TripAdvisor — and paste it in.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3 class="step-title">Choose your tone</h3>
+          <p class="step-desc">Professional, friendly, apologetic, or enthusiastic — you pick.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3 class="step-title">Copy &amp; post</h3>
+          <p class="step-desc">One click copies your response. Paste it straight into the review platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="container pricing-inner">
+      <h2 class="section-title">Simple, honest pricing</h2>
+      <p class="section-sub">No per-reply fees. No hidden charges. Just one plan.</p>
+
+      <div class="pricing-card">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-amount">
+          <span class="price-dollar">$</span>
+          <span class="price-num">19</span>
+          <span class="price-period">/month</span>
+        </div>
+        <ul class="pricing-features">
+          <li>✅ Unlimited reply generation</li>
+          <li>✅ All tones &amp; business types</li>
+          <li>✅ Copy to clipboard in one click</li>
+          <li>✅ Works with Google, Yelp, TripAdvisor</li>
+          <li>✅ Cancel anytime, no questions asked</li>
+        </ul>
+        <a href="https://stripe.com" class="btn btn-primary btn-full" target="_blank">
+          Start 7-Day Free Trial
+        </a>
+        <p class="pricing-note">No credit card required for trial.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo">
+        <span class="logo-icon">💬</span>
+        <span class="logo-text">Review Reply <span class="accent">AI</span></span>
+      </div>
+      <p class="footer-copy">© 2024 Review Reply AI. Built for business owners who care about their reputation.</p>
+      <div class="footer-links">
+        <a href="mailto:hello@reviewreplyai.com" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
